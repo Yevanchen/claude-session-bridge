@@ -35,7 +35,11 @@
       "Read metadata for this Claude session.",
       "Prepare a dry-run Claude resume command with a model override."
     ],
-    "brandColor": "#6D5BD0"
+    "brandColor": "#6D5BD0",
+    "screenshots": [
+      "./assets/screenshot-prompts.png",
+      "./assets/screenshot-composer.png"
+    ]
   },
   "mcpServers": "./.mcp.json"
 }

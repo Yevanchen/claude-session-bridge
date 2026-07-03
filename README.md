@@ -24,6 +24,12 @@ Then ask Codex:
 - Fresh background sessions with `claude --bg`, `--name`, and `--model`.
 - Codex-side aliases and archive state without editing Claude files.
 
+## Screenshots
+
+![Claude Session Bridge prompt cards](plugins/claude-session-bridge/assets/screenshot-prompts.png)
+
+![Claude Session Bridge composer](plugins/claude-session-bridge/assets/screenshot-composer.png)
+
 ## Why
 
 Codex already has first-class thread management: create, list, read, send follow-ups, fork, hand off, pin, archive, and rename threads. Claude Code has a strong local CLI and durable local session history. This plugin bridges those worlds without pretending they are the same system.
@@ -84,7 +90,3 @@ The plugin is a local MCP server. It scans Claude transcript JSONL files for met
 - Stores aliases/archive state under `~/.codex/claude-session-bridge/overlay.json`.
 - Terminal links are localhost-only and include a per-process token.
 - Background launches default to `dryRun: true` unless explicitly launched.
-
-## Status
-
-Public, experimental, and intentionally local-first. No open-source license is declared yet.
