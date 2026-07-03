@@ -1,6 +1,6 @@
 {
   "name": "claude-session-bridge",
-  "version": "0.1.0+codex.20260703170022",
+  "version": "0.1.0+codex.20260703183827",
   "description": "Bridge local Claude Code sessions into Codex through safe scanning, overlay metadata, terminal links, and a local session UI.",
   "author": {
     "name": "Yevanchen",
@@ -21,7 +21,7 @@
   "interface": {
     "displayName": "Claude Session Bridge",
     "shortDescription": "Inspect Claude Code sessions with local views and terminal links.",
-    "longDescription": "Adds local MCP tools for scanning Claude Code JSONL transcripts, keeping Codex-side aliases and archive state, listing Claude background agents, returning clickable Terminal resume links, and serving a local Working/Complete session view.",
+    "longDescription": "Adds local MCP tools for scanning Claude Code JSONL transcripts, keeping Codex-side aliases and archive state, listing Claude background agents, returning clickable full-access Terminal resume links, launching full-access background sessions, and serving a local Working/Complete session view.",
     "developerName": "Yevanchen",
     "websiteURL": "https://github.com/Yevanchen/claude-session-bridge",
     "category": "Productivity",

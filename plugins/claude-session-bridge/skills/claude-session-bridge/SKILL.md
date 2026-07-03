@@ -14,7 +14,8 @@ Use this skill when the user asks Codex to inspect, list, archive, alias, resume
 - Use `claude agents --json` for active/background session status.
 - Use `claude_session_resume_background` with `dryRun: true` unless the user explicitly asks to launch Claude Code.
 - Use `claude_session_start_background` with `dryRun: true` for new background sessions unless the user explicitly asks to launch Claude Code.
-- Terminal links are local `http://127.0.0.1` links with a per-process token. Clicking one opens macOS Terminal and runs `claude --resume` or a fresh `claude --bg` command.
+- Plugin-launched Claude commands default to `--dangerously-skip-permissions`; use them only for trusted local workspaces.
+- Terminal links are local `http://127.0.0.1` links with a per-process token. Clicking one opens macOS Terminal and runs `claude --resume` or a fresh `claude --bg` command with full access.
 
 ## Tool Routing
 

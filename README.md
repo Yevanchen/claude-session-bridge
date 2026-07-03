@@ -21,7 +21,7 @@ Then ask Codex:
 - Searchable transcript metadata from `~/.claude/projects`.
 - Background agent status from `claude agents --json`.
 - One-click local Terminal links for `claude --resume`.
-- Fresh background sessions with `claude --bg`, `--name`, and `--model`.
+- Fresh background sessions with `claude --bg`, `--name`, `--model`, and full-access permissions.
 - Codex-side aliases and archive state without editing Claude files.
 
 ## Screenshots
@@ -49,7 +49,7 @@ flowchart LR
 
   MCP --> Transcripts["~/.claude/projects/**/*.jsonl"]
   MCP --> Agents["claude agents --json --all"]
-  MCP --> Launcher["claude --bg / --resume / --model"]
+  MCP --> Launcher["claude --bg / --resume / --model / --dangerously-skip-permissions"]
   MCP --> Overlay["~/.codex/claude-session-bridge/overlay.json"]
   MCP --> UI["127.0.0.1 local UI"]
 
@@ -90,3 +90,4 @@ The plugin is a local MCP server. It scans Claude transcript JSONL files for met
 - Stores aliases/archive state under `~/.codex/claude-session-bridge/overlay.json`.
 - Terminal links are localhost-only and include a per-process token.
 - Background launches default to `dryRun: true` unless explicitly launched.
+- Plugin-launched Claude sessions default to `--dangerously-skip-permissions`; only use this on machines and workspaces you trust.

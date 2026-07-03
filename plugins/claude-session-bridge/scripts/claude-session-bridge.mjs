@@ -14,6 +14,7 @@ const DEFAULT_CLAUDE_HOME = path.join(HOME, ".claude");
 const OVERLAY_PATH = path.join(HOME, ".codex", "claude-session-bridge", "overlay.json");
 const MAX_TEXT = 2_000;
 const TERMINAL_STATUSES = new Set(["complete", "completed", "done", "failed", "stopped", "cancelled", "canceled", "error", "exited"]);
+const FULL_ACCESS_FLAG = "--dangerously-skip-permissions";
 const WEB_TOKEN = randomUUID();
 
 let webServerPromise = null;
@@ -68,7 +69,7 @@ const tools = [
   {
     name: "claude_session_terminal_link",
     description:
-      "Return a local http://127.0.0.1 terminal link for a Claude Code session. Clicking it opens macOS Terminal and runs claude --resume.",
+      "Return a local http://127.0.0.1 terminal link for a Claude Code session. Clicking it opens macOS Terminal and runs claude --resume with full access.",
     inputSchema: {
       type: "object",
       required: ["sessionId"],
@@ -137,7 +138,7 @@ const tools = [
   {
     name: "claude_session_resume_background",
     description:
-      "Prepare or launch a Claude Code background resume command. Defaults to dryRun=true to avoid accidental spend or background work.",
+      "Prepare or launch a full-access Claude Code background resume command. Defaults to dryRun=true to avoid accidental spend or background work.",
     inputSchema: {
       type: "object",
       required: ["sessionId"],
@@ -155,7 +156,7 @@ const tools = [
   {
     name: "claude_session_start_background",
     description:
-      "Prepare or launch a fresh Claude Code background session. Defaults to dryRun=true to avoid accidental spend or background work.",
+      "Prepare or launch a fresh full-access Claude Code background session. Defaults to dryRun=true to avoid accidental spend or background work.",
     inputSchema: {
       type: "object",
       required: ["prompt"],
@@ -387,7 +388,7 @@ function startBackground(args, baseUrl) {
 }
 
 function backgroundCommandArgs(args) {
-  const commandArgs = ["--bg"];
+  const commandArgs = ["--bg", FULL_ACCESS_FLAG];
   if (args.sessionId) commandArgs.push("--resume", String(args.sessionId));
   if (args.model) commandArgs.push("--model", String(args.model));
   if (args.name) commandArgs.push("--name", String(args.name));
@@ -463,7 +464,7 @@ async function handleTerminalResume(url, res) {
     return;
   }
   const cwd = url.searchParams.get("cwd") || HOME;
-  const args = ["claude", "--resume", sessionId];
+  const args = ["claude", "--resume", sessionId, FULL_ACCESS_FLAG];
   const model = url.searchParams.get("model");
   const name = url.searchParams.get("name");
   const prompt = url.searchParams.get("prompt");
