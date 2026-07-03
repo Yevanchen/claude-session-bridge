@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "claude-session-bridge": {
+      "cwd": ".",
+      "command": "node",
+      "args": [
+        "./scripts/claude-session-bridge.mjs"
+      ]
+    }
+  }
+}
